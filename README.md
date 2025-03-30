@@ -1,172 +1,33 @@
 # Libralink Protocol v1
 
+## Context
+
+<p align="center">
+    <img src="./resources/UC_Cross_Border.png" width="75%" height="75%"/>
+</p>
+
 ## API Endpoints
-- `GET /trusted-parties` - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
-- `POST /payer/echeck-evaluate`
+- `GET /processors/trusted` - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
+- `POST /payer/echeck-pre-issue`
 - `POST /payer/echeck-issue`
 - `POST /payee/request`
 - `POST /payee/echeck-deposit`
 
 ## API Object Model
+
 <p align="center">
-    <img src="./resources/Libralink_Protocol_Simplified.png" width="75%" height="75%"/>
+    <img src="./resources/Libralink_Protocol_Simplified.png" width="100%" height="100%"/>
 </p>
 
 ## Details
-### Envelope
-```
-+-----------------------------------+
-|              Envelope             |
-+-----------------------------------+
-| protocolVersion: int = 1          |
-| envelopeId: UUID                  |
-| header: HeaderEnvelope            |
-| body: BodyEnvelope                |
-| error: ErrorEnvelope              |
-+-----------------------------------+
-```
-`Envelope` - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-
-```
-+-----------------------------------+
-|          HeaderEnvelope           |
-+-----------------------------------+
-| headers: HeaderWithSignature[]    |
-+-----------------------------------+
-```
-`HeaderEnvelope` - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-```
-+-----------------------------------+
-|           BodyEnvelope            |
-+-----------------------------------+
-| body: oneOf[PaymentRequestBody |
-|  ECheckBody, DepositReceiptBody]  |
-+-----------------------------------+
-```
-`BodyEnvelope` - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-
-```
-+-----------------------------------+
-|           ErrorEnvelope           |
-+-----------------------------------+
-| error: ErrorMessage             |
-+-----------------------------------+
-```
-`ErrorEnvelope` - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-
-### Payment Request
-```
-+-----------------------------------+
-|        PaymentRequestBody         |
-+-----------------------------------+
-| amount: BigDecimal                |
-| type: String = "USDT"             |
-| createdAt: DateTime               |
-| note: String                      |
-| payer: Address                    |
-| payerParty: Address               |
-| payee: Address                    |
-| payeeParty: Address               |
-+-----------------------------------+
-```
-`PaymentRequestBody` - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-
-```
-+-----------------------------------+
-|             ECheckBody            |
-+-----------------------------------+
-| amount: BigDecimal                |
-| type: String = "USDT"             |
-| createdAt: DateTime               |
-| expiresAt: DateTime               |
-| note: String                      |
-| payer: Address                    |
-| payerParty: Address               |
-| payee: Address                    |
-| payeeParty: Address               |
-+-----------------------------------+
-```
-`ECheckBody` - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-
-```
-+-----------------------------------+
-|        DepositReceiptBody         |
-+-----------------------------------+
-| amount: BigDecimal                |
-| type: String = "USDT"             |
-| createdAt: DateTime               |
-| checkId: UUID                     |
-| requestIds: UUID[]                |
-| payer: Address                    |
-| payerParty: Address               |
-| payee: Address                    |
-| payeeParty: Address               |
-+-----------------------------------+
-```
-`DepositReceiptBody` - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-
-### Signatures
-```
-+-----------------------------------+
-|        HeaderWithSignature        |
-+-----------------------------------+
-| content:                          |
-|  oneOf[EmptyHeaderContent,        |
-|        PartyHeaderContent]        |
-|                                   |
-| bodySig: Signature                |
-| headerSig: Signature              |
-+-----------------------------------+
-```
-`HeaderWithSignature` - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-
-```
-+-----------------------------------+
-|             Signature             |
-+-----------------------------------+
-| address: Address                  |
-| nonce: String                     |
-| sig: String                       |
-+-----------------------------------+
-```
-`Signature` - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-
-### Headers
-```
-+-----------------------------------+
-|        PartyHeaderContent         |
-+-----------------------------------+
-| fee: FeeStructure                 |
-+-----------------------------------+
-+-----------------------------------+
-|         EmptyHeaderContent        |
-+-----------------------------------+
-|                                   |
-+-----------------------------------+
-```
-
 ### Processing Fee
-```
-+-----------------------------------+
-|           FeeStructure            |
-+-----------------------------------+
-| flatFee: BigDecimal               |
-| percentFee: BigDecimal            |
-+-----------------------------------+
-```
+TBD
 
 ##### Total Amount
 TBD
 
 ### Error Message
-```
-+-----------------------------------+
-|           ErrorMessage            |
-+-----------------------------------+
-| code: int                         |
-| message: String                   |
-+-----------------------------------+
-```
+TBD 
 
 #### Errors
 - `100` - Insufficient funds
@@ -205,10 +66,3 @@ TBD
     <img src="./resources/UC_No_Internet.png" width="50%" height="50%" />
 </p>
 
-### Cross-border Payment Processing
-
-<p align="center">
-    <img src="./resources/UC_Cross_Border.png" width="50%" height="50%" />
-</p>
-
-TBD
