@@ -37,9 +37,9 @@ TBD
 
 ## Use Cases
 
-### Payee initiated Payment Request
+### Payee initiated Payment
 <p align="center">
-    <img src="./resources/UC_Payee_Initiated_Request.png" width="50%" height="50%" />
+    <img src="./resources/UC_Payee_Initiated_Payment.png" width="50%" height="50%" />
 </p>
 
 TBD
@@ -54,7 +54,7 @@ TBD
 
 ### Payee deposits E-Check
 <p align="center">
-    <img src="./resources/UC_Payee_Deposits_Check.png" width="50%" height="50%" />
+    <img src="./resources/UC_Payee_Deposits_Check.png" width="75%" height="75%" />
 </p>
 
 ### Partial Internet Access
@@ -63,6 +63,6 @@ TBD
 ### Offline Payment (neither Payee, not Payer have Internet Access)
 
 <p align="center">
-    <img src="./resources/UC_No_Internet.png" width="50%" height="50%" />
+    <img src="./resources/UC_No_Internet.png" width="75%" height="75%" />
 </p>
 
