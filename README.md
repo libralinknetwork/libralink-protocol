@@ -9,8 +9,8 @@
 ## API Endpoints
 
 - `POST /processor/trusted` - get trusted processors list to determine if Payer/Payee payment is possible
-- `POST /account/register` - register `Public Key` at Processor
-- `POST /account/balance`
+- `POST /agent/register` - register `Public Key` at Processor
+- `POST /agent/balance`
 
 - `POST /echeck/pre-issue` - validates E-Check envelope and calculates processor fee, 
 no Processor signature at this point
