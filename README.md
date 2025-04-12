@@ -8,14 +8,14 @@
 
 ## API Endpoints
 
-- `POST /processor/trusted` - get trusted processors list to determine if Payer/Payee payment is possible
-- `POST /agent/register` - register `Public Key` at Processor
-- `POST /agent/balance`
+- `POST /protocol/processor/trusted` - get trusted processors list to determine if Payer/Payee payment is possible
+- `POST /protocol/agent/register` - register `Public Key` at Processor
+- `POST /protocol/agent/balance`
 
-- `POST /echeck/pre-issue` - validates E-Check envelope and calculates processor fee, 
+- `POST /protocol/echeck/pre-issue` - validates E-Check envelope and calculates processor fee, 
 no Processor signature at this point
-- `POST /echeck/issue` - blocks Payer funds, provides fees & Processor(s) signature(s)
-- `POST /echeck/deposit` - blocks Payer funds, provides fees & Processor(s) signature(s)
+- `POST /protocol/echeck/issue` - blocks Payer funds, provides fees & Processor(s) signature(s)
+- `POST /protocol/echeck/deposit` - blocks Payer funds, provides fees & Processor(s) signature(s)
 
 ## API Object Model
 
