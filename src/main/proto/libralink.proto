@@ -1,0 +1,123 @@
+syntax = "proto3";
+package io.libralink.client.payment.proto;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/any.proto";
+
+enum SignatureReason {
+    NONE = 0;
+    IDENTITY = 1;
+    FEE_LOCK = 2;
+    CONFIRM = 3;
+}
+
+message Envelope {
+  string id = 1;
+  EnvelopeContent content = 2;
+  string sig = 3;
+}
+
+message EnvelopeContent {
+  google.protobuf.Any entity = 1;
+  string address = 2;
+  string pubKey = 3;
+  string algorithm = 4; // e.g., "secp256k1", "Dilithium5"
+  SignatureReason reason = 5;
+}
+
+message ProcessingFee {
+  string feeType = 1; // e.g., FLAT, PERCENT
+  string amount = 2;   // BigDecimal as string
+  string intermediary = 3;
+  Envelope envelope = 4;
+}
+
+message PaymentRequest {
+  string amount = 1;
+  string from = 2;
+  string fromProc = 3;
+  string to = 4;
+  string toProc = 5;
+  string currency = 6;
+  int64 created_at = 7;
+  string note = 8;
+  string correlationId = 9;
+}
+
+message SurchargeRequest {
+  string amount = 1;
+  string to = 2;
+  string toProc = 3;
+  string note = 4;
+  Envelope envelope = 5;
+}
+
+message ECheckSplit {
+  string amount = 1;
+  string to = 2;
+  string toProc = 3;
+}
+
+message ECheck {
+  string faceAmount = 1;
+  string currency = 2;
+  string from = 3;
+  string fromProc = 4;
+  string to = 5;
+  string toProc = 6;
+  repeated ECheckSplit splits = 7;
+  int64 createdAt = 8;
+  int64 expiresAt = 9;
+  string note = 10;
+  string correlationId = 11;
+}
+
+message GetBalanceRequest {
+  string address = 1;
+}
+
+message GetBalanceResponse {
+  string address = 1;
+  string available = 2;
+  string pending = 3;
+}
+
+message DepositRequest {
+  Envelope checkEnvelope = 1;
+  repeated Envelope requestEnvelopes = 2;
+}
+
+message DepositResponse {
+  string checkEnvelopeId = 1;
+  repeated string requestEnvelopeIds = 2;
+}
+
+message RegisterKeyRequest {
+  string address = 1;
+  string pubKey = 2;
+  string algorithm = 3;
+  string confirmationId = 4;
+  string hash = 5;
+}
+
+message RegisterKeyResponse {
+  string address = 1;
+}
+
+message GetProcessorsRequest {
+  string address = 1;
+}
+
+message ProcessorDetails {
+  string address = 1;
+}
+
+message GetProcessorsResponse {
+  repeated ProcessorDetails processors = 1;
+}
+
+message ErrorResponse {
+  int32 code = 1;
+  string message = 2;
+}
+
