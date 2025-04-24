@@ -20,7 +20,7 @@ no Processor signature at this point
 ## API Object Model
 
 <p align="center">
-    <img src="./etc/Libralink_Protocol_Simplified_2.png" width="100%" height="100%"/>
+    <img src="./etc/Libralink_Protocol_Simplified_3.png" width="100%" height="100%"/>
 </p>
 
 ## Use Cases

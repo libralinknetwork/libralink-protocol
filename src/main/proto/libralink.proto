@@ -1,8 +1,6 @@
 syntax = "proto3";
 package io.libralink.client.payment.proto;
 
-import "google/protobuf/any.proto";
-
 enum SignatureReason {
     NONE = 0;
     IDENTITY = 1;
@@ -17,11 +15,26 @@ message Envelope {
 }
 
 message EnvelopeContent {
-  google.protobuf.Any entity = 1;
-  string address = 2;
-  string pubKey = 3;
-  string algorithm = 4; // e.g., "secp256k1", "Dilithium5"
-  SignatureReason reason = 5;
+  string address = 1;
+  string pubKey = 2;
+  string algorithm = 3; // e.g., "secp256k1", "Dilithium5"
+  SignatureReason reason = 4;
+  oneof entity {
+    Envelope envelope = 5;
+    ProcessingFee processingFee = 6;
+    SurchargeRequest surchargeRequest = 7;
+    PaymentRequest paymentRequest = 8;
+    ECheck check = 9;
+    GetBalanceRequest getBalanceRequest = 10;
+    GetBalanceResponse getBalanceResponse = 11;
+    DepositRequest depositRequest = 12;
+    DepositResponse depositResponse = 13;
+    GetProcessorsRequest getProcessorsRequest = 14;
+    GetProcessorsResponse getProcessorsResponse = 15;
+    RegisterKeyRequest registerKeyRequest = 16;
+    RegisterKeyResponse registerKeyResponse = 17;
+    ErrorResponse errorResponse = 18;
+  }
 }
 
 message ProcessingFee {
