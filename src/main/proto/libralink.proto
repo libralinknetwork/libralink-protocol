@@ -21,19 +21,20 @@ message EnvelopeContent {
   SignatureReason reason = 4;
   oneof entity {
     Envelope envelope = 5;
-    ProcessingFee processingFee = 6;
-    SurchargeRequest surchargeRequest = 7;
-    PaymentRequest paymentRequest = 8;
-    ECheck check = 9;
-    GetBalanceRequest getBalanceRequest = 10;
-    GetBalanceResponse getBalanceResponse = 11;
-    DepositRequest depositRequest = 12;
-    DepositResponse depositResponse = 13;
-    GetProcessorsRequest getProcessorsRequest = 14;
-    GetProcessorsResponse getProcessorsResponse = 15;
-    RegisterKeyRequest registerKeyRequest = 16;
-    RegisterKeyResponse registerKeyResponse = 17;
-    ErrorResponse errorResponse = 18;
+    ErrorResponse errorResponse = 6;
+    ProcessingFee processingFee = 7;
+    SurchargeRequest surchargeRequest = 8;
+    PaymentRequest paymentRequest = 9;
+    ECheck check = 10;
+    GetBalanceRequest getBalanceRequest = 11;
+    GetBalanceResponse getBalanceResponse = 12;
+    DepositRequest depositRequest = 13;
+    DepositResponse depositResponse = 14;
+    GetProcessorsRequest getProcessorsRequest = 15;
+    GetProcessorsResponse getProcessorsResponse = 16;
+    RegisterKeyRequest registerKeyRequest = 17;
+    RegisterKeyResponse registerKeyResponse = 18;
+    SharePayerDetails sharePayerDetails = 19;
   }
 }
 
@@ -131,5 +132,11 @@ message GetProcessorsResponse {
 message ErrorResponse {
   int32 code = 1;
   string message = 2;
+}
+
+message SharePayerDetails {
+  string challenge = 1;
+  string from = 2;
+  string fromProc = 3;
 }
 
