@@ -34,7 +34,8 @@ message EnvelopeContent {
     GetProcessorsResponse getProcessorsResponse = 16;
     RegisterKeyRequest registerKeyRequest = 17;
     RegisterKeyResponse registerKeyResponse = 18;
-    SharePayerDetails sharePayerDetails = 19;
+    DeviceSharePayerDetails deviceSharePayerDetails = 19;
+    DeviceTransactionCompleted deviceTransactionCompleted = 20;
   }
 }
 
@@ -134,9 +135,12 @@ message ErrorResponse {
   string message = 2;
 }
 
-message SharePayerDetails {
+message DeviceSharePayerDetails {
   string challenge = 1;
   string from = 2;
-  string fromProc = 3;
+  repeated String processors = 3;
 }
 
+message DeviceTransactionCompleted {
+  string correlationId = 1;
+}
