@@ -138,7 +138,7 @@ message ErrorResponse {
 message DeviceSharePayerDetails {
   string challenge = 1;
   string from = 2;
-  repeated String processors = 3;
+  repeated string processors = 3;
 }
 
 message DeviceTransactionCompleted {
