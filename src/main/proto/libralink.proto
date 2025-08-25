@@ -90,10 +90,15 @@ message GetBalanceRequest {
   string address = 1;
 }
 
-message GetBalanceResponse {
-  string address = 1;
+message CurrencyBalanceDetails {
+  string currency = 1;
   string available = 2;
   string pending = 3;
+}
+
+message GetBalanceResponse {
+  string address = 1;
+  repeated CurrencyBalanceDetails balances = 2;
 }
 
 message DepositRequest {
